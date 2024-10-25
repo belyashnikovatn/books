@@ -27,8 +27,8 @@
                             </td>
                             <td>
                                 <div class="btn-group" role="group">
-                                    <button type="button" class="btn btn-warning btn-sm">Udpate</button>
-                                    <button type="button" class="btn btn-danger btn-sm">Delete</button>
+                                    <button type="button" class="btn btn-warning btn-sm">Обновить</button>
+                                    <button type="button" class="btn btn-danger btn-sm">Удалить</button>
                                 </div>
                             </td>
                         </tr>
