@@ -1,2 +1,11 @@
 # books
-Books to read
+Книги для книжного клуба
+
+## Технологии
+- Flask for  RESTful API
+- Vue (JS framework for the interface)
+- Axios library (for the requests)
+- Bootstrap 
+
+
+ 
