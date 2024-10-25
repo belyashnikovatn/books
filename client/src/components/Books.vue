@@ -250,6 +250,17 @@
             this.getBooks();
           });
       },
+      getBooks() {
+        const path = 'http://localhost:5001/books';
+        axios.get(path)
+          .then((res) => {
+            this.books = res.data.books;
+          })
+          .catch((error) => {
+  
+            console.error(error);
+          });
+      },
       updateBook(payload, bookID) {
         const path = `http://localhost:5001/books/${bookID}`
         axios.put(path, payload)
@@ -261,17 +272,6 @@
           .catch((error) => {
             console.error(error);
             this.getBooks();
-          });
-      },
-      getBooks() {
-        const path = 'http://localhost:5001/books';
-        axios.get(path)
-          .then((res) => {
-            this.books = res.data.books;
-          })
-          .catch((error) => {
-  
-            console.error(error);
           });
       },
       handleAddReset() {
@@ -291,6 +291,23 @@
         };
         this.addBook(payload);
         this.initForm();
+      },
+      handleEditCancel() {
+        this.toggleEditBookModal(null);
+        this.initForm();
+        this.getBooks();
+      },
+      handleEditSubmit() {
+        this.toggleEditBookModal(null);
+        let read = false;
+        if (this.editBookForm.read) read = true;
+        const payload = {
+          title: this.editBookForm.title,
+          author: this.editBookForm.author,
+          description: this.editBookForm.description,
+          read,          
+        };
+        this.updateBook(payload, this.editBookForm.id);
       },
       initForm() {
         this.addBookForm.title = '';
@@ -323,23 +340,6 @@
         } else {
           body.classList.remove('modal-open');
         }
-      },
-      handleEditSubmit() {
-        this.toggleEditBookModal(null);
-        let read = false;
-        if (this.editBookForm.read) read = true;
-        const payload = {
-          title: this.addBookForm.title,
-          author: this.addBookForm.author,
-          description: this.addBookForm.description,
-          read,          
-        };
-        this.updateBook(payload, this.editBookForm.id);
-      },
-      handleEditCancel() {
-        this.toggleEditBookModal(null);
-        this.initForm();
-        this.getBooks();
       },
     },
     created() {
