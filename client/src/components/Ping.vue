@@ -1,10 +1,12 @@
 <template>
-    <div>
-        <p>{{ msg }}</p>
+    <div class="container">
+        <button type="button" class="btn btn-primary">{{ msg }}</button>
     </div>
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
     name: 'Ping', 
     data() {
@@ -21,7 +23,7 @@ export default {
             })
             .catch((error) => {
 
-                console.error(error)
+                console.error(error);
             });
         },
     },

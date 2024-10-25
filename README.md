@@ -5,7 +5,7 @@
 - Flask for  RESTful API
 - Vue (JS framework for the interface)
 - Axios library (for the requests)
-- Bootstrap 
+- Bootstrap (for the beauty)
 
 
  
