@@ -33,6 +33,14 @@ BOOKS = [
 ]
 
 
+def remove_book(book_id):
+    for book in BOOKS:
+        if book['id'] == book_id:
+            BOOKS.remove(book)
+            return True
+    return False
+
+
 @app.route('/ping', methods=['GET'])
 def ping_pong():
     return jsonify('pong!')
@@ -71,14 +79,6 @@ def single_book(book_id):
         })
         response_object['message'] = 'Книга изменена!'
     return jsonify(response_object)
-
-
-def remove_book(book_id):
-    for book in BOOKS:
-        if book['id'] == book_id:
-            BOOKS.remove(book)
-            return True
-    return False
 
 
 if __name__ == '__main__':

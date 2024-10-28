@@ -33,13 +33,13 @@
               </td>
               <td>
                 <div class="btn-group" role="group">
-                    <button 
-                      type="button"
-                      class="btn btn-warning btn-sm"
-                      @click="toggleEditBookModal(book)">
-                      Обновить
-                    </button>
-                    <button type="button" class="btn btn-danger btn-sm">Удалить</button>
+                  <button
+                    type="button"
+                    class="btn btn-warning btn-sm"
+                    @click="toggleEditBookModal(book)">
+                    Изменить
+                  </button>
+                  <button type="button" class="btn btn-danger btn-sm">Удалить</button>
                 </div>
               </td>
             </tr>
@@ -136,7 +136,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Update</h5>
+          <h5 class="modal-title">Изменить</h5>
           <button
             type="button"
             class="close"
@@ -181,7 +181,7 @@
                 class="form-check-input"
                 id="editBookRead"
                 v-model="editBookForm.read">
-              <label class="form-check-label" for="editBookRead">Read?</label>
+              <label class="form-check-label" for="editBookRead">Прочитали?</label>
             </div>
             <div class="btn-group" role="group">
               <button
@@ -223,6 +223,7 @@
         },
         books: [],
         editBookForm: {
+          id: '',
           title: '',
           author: '',
           description: '',
@@ -329,7 +330,7 @@
           body.classList.remove('modal-open');
         }
       },
-      toggleEditBookModal() {
+      toggleEditBookModal(book) {
         if (book) {
           this.editBookForm = book;
         }
