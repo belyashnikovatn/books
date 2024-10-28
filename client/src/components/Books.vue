@@ -39,7 +39,12 @@
                     @click="toggleEditBookModal(book)">
                     Изменить
                   </button>
-                  <button type="button" class="btn btn-danger btn-sm">Удалить</button>
+                  <button
+                    type="button"
+                    class="btn btn-danger btn-sm"
+                    @click="handleDeleteBook(book)">
+                    Удалить
+                  </button>
                 </div>
               </td>
             </tr>
@@ -341,6 +346,22 @@
         } else {
           body.classList.remove('modal-open');
         }
+      },
+      handleDeleteBook(book) {
+        this.removeBook(book.id);
+      },
+      removeBook(bookID) {
+        const path = `http://localhost:5001/books/${bookID}`;
+        axios.delete(path)
+          .then(() => {
+            this.getBooks();
+            this.message = 'Книга удалена!';
+            this.showMessage = true;
+          })
+          .catch((error) => {
+            console.error(error);
+            this.getBooks();
+          });
       },
     },
     created() {
